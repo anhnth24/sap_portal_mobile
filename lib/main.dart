@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'authentication.dart';
+import 'homepage.dart';
 
 final auth = Authentication();
 
@@ -25,16 +26,16 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         resizeToAvoidBottomInset: true,
-        backgroundColor: const Color.fromARGB(40, 38, 56, 1),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         body: const LoginScreen(),
         bottomNavigationBar: BottomAppBar(
-          color: Colors.transparent,
+          color: const Color.fromARGB(255, 255, 255, 255),
           elevation: 0,
           child: Container(
             padding: const EdgeInsets.all(20),
             child: const Text(
-              "Anhnth dev, hehehe",
-              style: TextStyle(color: Colors.white),
+              "Anhnth dev, yyyyy",
+              style: TextStyle(color: Colors.green),
               textAlign: TextAlign.center,
             ),
           ),
@@ -179,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 70,
               padding: const EdgeInsets.only(top: 20),
               child: RaisedButton(
-                  color: Colors.pink,
+                  color: Colors.green,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   onPressed: () {
@@ -234,57 +235,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: true,
-        backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Center(
-              child: Container(
-                  height: 400,
-                  width: 200,
-                  padding: const EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "Successfull login!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                  )),
-            ),
-            Container(
-              height: 100,
-              width: 570,
-              padding: const EdgeInsets.all(20),
-              child: RaisedButton(
-                  color: Colors.pink,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MyApp()),
-                      (Route<dynamic> route) => false,
-                    );
-                  },
-                  child: const Text("Logout",
-                      style: TextStyle(color: Colors.white))),
-            )
-          ],
-        ));
-  }
-}
-
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
 
@@ -297,7 +247,7 @@ class _SignupPage extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: const SignupPageContent(),
       bottomNavigationBar: BottomAppBar(
           color: Colors.transparent,
@@ -306,7 +256,7 @@ class _SignupPage extends State<SignupPage> {
             padding: const EdgeInsets.all(20),
             child: const Text(
               "Company name, Inc",
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Color.fromARGB(255, 47, 255, 0)),
               textAlign: TextAlign.center,
             ),
           )),
@@ -482,7 +432,7 @@ class _SignupPageContent extends State<SignupPageContent> {
             height: 70,
             padding: const EdgeInsets.only(top: 20),
             child: RaisedButton(
-                color: Colors.pink,
+                color: Colors.green,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () async {
