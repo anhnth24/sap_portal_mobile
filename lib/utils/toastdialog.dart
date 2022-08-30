@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void notification_success(String msg) {
+void notificationSuccess(String msg) {
   Fluttertoast.showToast(
       msg: msg, // message
       toastLength: Toast.LENGTH_SHORT, // length
@@ -11,7 +11,7 @@ void notification_success(String msg) {
       textColor: Colors.white);
 }
 
-void notification_error(String msg) {
+void notificationError(String msg) {
   Fluttertoast.showToast(
       msg: msg, // message
       toastLength: Toast.LENGTH_SHORT, // length

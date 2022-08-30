@@ -72,7 +72,7 @@ class _RegisterState extends State<Register> {
                               email: email, password: password)
                           .then(
                             (success) =>
-                                notification_success('Create successfully'),
+                                notificationSuccess('Create successfully'),
 
                             // Toast.show(
                             // "Create user successfully !",
@@ -85,12 +85,12 @@ class _RegisterState extends State<Register> {
                         print(e.code);
                       }
                       if (e.code == 'weak-password') {
-                        notification_success(
+                        notificationSuccess(
                             'week password, atleast 6 characters');
                       } else if (e.code == 'email-already-in-use') {
-                        notification_success('email already exists');
+                        notificationSuccess('email already exists');
                       } else if (e.code == 'firebase/invalid-email') {
-                        notification_success('invalid email');
+                        notificationSuccess('invalid email');
                       }
                     }
                   },
