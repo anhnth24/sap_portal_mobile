@@ -17,21 +17,21 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
+        return ios;
+      case TargetPlatform.macOS:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
+          'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
-      case TargetPlatform.macOS:
-        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -49,16 +49,15 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBVC8gUGwCyl0zEdCS-sI8kzhL3CRGt6Tc',
-    appId: '1:265520802260:web:9394ce3aab58162fbc4e41',
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyBsDwE78K9K2HRsnQWOeUryYQW5lcz5SiQ',
+    appId: '1:265520802260:android:647ce1cc8e1c7835bc4e41',
     messagingSenderId: '265520802260',
     projectId: 'sapmobflutter',
-    authDomain: 'sapmobflutter.firebaseapp.com',
     storageBucket: 'sapmobflutter.appspot.com',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
+  static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD17N6S6A8QxqCPV_C5bZJr3yLKkM69tws',
     appId: '1:265520802260:ios:2e562a45a498ceacbc4e41',
     messagingSenderId: '265520802260',

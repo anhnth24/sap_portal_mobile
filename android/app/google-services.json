@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "265520802260",
+    "project_id": "sapmobflutter",
+    "storage_bucket": "sapmobflutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265520802260:android:647ce1cc8e1c7835bc4e41",
+        "android_client_info": {
+          "package_name": "com.example.sap_portal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265520802260-a0nu9b9o7g1oa3ehnp1pkqkrhfqvfdha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsDwE78K9K2HRsnQWOeUryYQW5lcz5SiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265520802260-a0nu9b9o7g1oa3ehnp1pkqkrhfqvfdha.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "265520802260-90j5th5lp7ckp0j460ilic3t62gghbm7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sapPortal"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

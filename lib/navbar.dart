@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sap_portal/function_pages/register.dart';
 import 'package:sap_portal/function_pages/saleorder.dart';
 
 import 'function_pages/purchaseorder.dart';
@@ -16,6 +18,7 @@ class NavBar extends StatelessWidget {
     Widget continueButton = TextButton(
       child: const Text("Continue"),
       onPressed: () {
+        FirebaseAuth.instance.signOut();
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const MyApp()),
@@ -74,14 +77,26 @@ class NavBar extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.menu),
+            title: const Text('Create user'),
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const Register()),
+                (Route<dynamic> route) => false,
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.menu),
             title: const Text('Logout'),
             onTap: () {
-              // Navigator.pushAndRemoveUntil(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const MyApp()),
-              //   (Route<dynamic> route) => false,
-              // );
-              showAlertDialog(context);
+              FirebaseAuth.instance.signOut();
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const MyApp()),
+                (Route<dynamic> route) => false,
+              );
+              //showAlertDialog(context);
             },
           ),
         ],

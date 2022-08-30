@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
+import 'package:toast/toast.dart';
 import 'authentication.dart';
 import 'function_pages/login.dart';
 import 'homepage.dart';
@@ -10,6 +11,7 @@ import 'homepage.dart';
 final auth = Authentication();
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return MaterialApp(
       title: 'Login',
       theme: ThemeData(

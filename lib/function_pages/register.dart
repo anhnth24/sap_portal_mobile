@@ -1,19 +1,20 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sap_portal/homepage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sap_portal/firebase_options.dart';
 
-import '../firebase_options.dart';
+import '../navbar.dart';
+import '../utils/toastdialog.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   late final TextEditingController _email;
   late final TextEditingController _password;
 
@@ -36,15 +37,14 @@ class _LoginState extends State<Login> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: const Text("Welcome !!!"),
+        title: const Text("Regist new user"),
       ),
+      drawer: const NavBar(),
       body: FutureBuilder(
           future: Firebase.initializeApp(
               options: DefaultFirebaseOptions.currentPlatform),
           builder: (context, snapshot) {
             return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextField(
                   controller: _email,
@@ -67,30 +67,30 @@ class _LoginState extends State<Login> {
                     final email = _email.text;
                     final password = _password.text;
                     try {
-                      final cre = FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
                               email: email, password: password)
-                          .then((value) {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()),
-                          (Route<dynamic> route) => false,
-                        );
-                      });
+                          .then(
+                            (success) =>
+                                notification_success('Create successfully'),
 
-                      if (kDebugMode) {
-                        print(cre);
-                      }
+                            // Toast.show(
+                            // "Create user successfully !",
+                            // duration: 2,
+                            // backgroundColor: Colors.green,
+                            // textStyle: const TextStyle(color: Colors.white))
+                          );
                     } on FirebaseAuthException catch (e) {
-                      if (e.code == 'user-not-found') {
-                        if (kDebugMode) {
-                          print('user not found');
-                        }
-                      } else if (e.code == 'wrong-password') {
-                        if (kDebugMode) {
-                          print('wrong credentials');
-                        }
+                      if (kDebugMode) {
+                        print(e.code);
+                      }
+                      if (e.code == 'weak-password') {
+                        notification_success(
+                            'week password, atleast 6 characters');
+                      } else if (e.code == 'email-already-in-use') {
+                        notification_success('email already exists');
+                      } else if (e.code == 'firebase/invalid-email') {
+                        notification_success('invalid email');
                       }
                     }
                   },
@@ -98,7 +98,7 @@ class _LoginState extends State<Login> {
                       primary: Colors.green,
                       textStyle: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold)),
-                  child: const Text("Login"),
+                  child: const Text("Register"),
                 ),
               ],
             );
