@@ -20,7 +20,7 @@ class _PurchaseorderState extends State<Purchaseorder> {
         ),
         drawer: const NavBar(),
         resizeToAvoidBottomInset: true,
-        backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -33,9 +33,9 @@ class _PurchaseorderState extends State<Purchaseorder> {
                   child: const Text(
                     "Purchase order page ...!",
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    style: TextStyle(color: Colors.red, fontSize: 25),
                   )),
-            ),
+            )
             // Container(
             //   child: CustomButton(
             //     buttonText: 'PO back to homepage',

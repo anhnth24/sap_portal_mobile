@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'authentication.dart';
+import 'function_pages/login.dart';
 import 'homepage.dart';
 
 final auth = Authentication();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        body: const LoginScreen(),
+        body: const Login(),
         bottomNavigationBar: BottomAppBar(
           color: const Color.fromARGB(255, 255, 255, 255),
           elevation: 0,

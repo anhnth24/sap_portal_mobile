@@ -11,6 +11,8 @@ class Saleorder extends StatefulWidget {
 }
 
 class _SaleorderState extends State<Saleorder> {
+  TextEditingController customerController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +22,23 @@ class _SaleorderState extends State<Saleorder> {
         ),
         drawer: const NavBar(),
         resizeToAvoidBottomInset: true,
-        backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[],
+          children: <Widget>[
+            TextFormField(
+              onTap: () {},
+              controller: customerController, // Controller for Username
+              decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "customer",
+                  contentPadding: EdgeInsets.all(20)),
+              onEditingComplete: () => FocusScope.of(context).nextFocus(),
+            ),
+            const Divider(
+              thickness: 3,
+            ),
+          ],
         ));
   }
 }
