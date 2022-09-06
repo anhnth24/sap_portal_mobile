@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:sap_portal/function_pages/sale_order_detail_page.dart';
 import 'package:sap_portal/function_pages/sidebar.dart';
 import 'package:sap_portal/models/customer_model.dart';
 import 'package:sap_portal/services/user_services.dart';
@@ -49,18 +50,24 @@ class _SaleOrderState extends State<SaleOrder> {
         child: ListView.builder(
             itemCount:
                 customers != null ? customers?.length : 0, //customers?.length,
-            itemBuilder: ((context, index) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Userid : ${customers![index].id}',
-                    style: textDisplay,
+            itemBuilder: (context, index) {
+              return Card(
+                child: ListTile(
+                  title: Text(customers![index].name),
+                  leading: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Image.asset(imgFis),
                   ),
-                  Text('User name : ${customers![index].name}'),
-                ],
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DetailSaleOrderPage(
+                              customer: customers![index],
+                            )));
+                  },
+                ),
               );
-            })),
+            }),
       ),
     );
   }

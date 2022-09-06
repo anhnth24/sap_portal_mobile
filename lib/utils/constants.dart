@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const imgFis = 'assets/images/fis.png';
+
 const primaryColor = Color.fromARGB(176, 97, 230, 71);
 const backgroundColor = Color.fromARGB(255, 255, 255, 255);
 const grey = Colors.grey;

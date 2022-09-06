@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sap_portal/firebase_options.dart';
 
+import '../ui/build_text.dart';
 import 'sidebar.dart';
 import '../utils/constants.dart';
 import '../utils/toast_dialog.dart';
@@ -38,7 +39,7 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
-        title: const Text("Regist new user"),
+        title: const Text("Create user"),
       ),
       drawer: const SideBar(),
       body: FutureBuilder(
@@ -47,22 +48,26 @@ class _RegisterState extends State<Register> {
           builder: (context, snapshot) {
             return Column(
               children: [
-                TextField(
-                  controller: _email,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                      hintText: "Email", contentPadding: EdgeInsets.all(20)),
-                ),
-                TextField(
-                  controller: _password,
-                  obscureText: true,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  decoration: const InputDecoration(
-                      hintText: "Password", contentPadding: EdgeInsets.all(20)),
-                ),
+                buildTextFieldSecure(_email, context, 'Email',
+                    TextInputType.emailAddress, false, false, false),
+                buildTextFieldSecure(_password, context, 'Password',
+                    TextInputType.visiblePassword, true, false, false),
+                // TextField(
+                //   controller: _email,
+                //   enableSuggestions: false,
+                //   autocorrect: false,
+                //   keyboardType: TextInputType.emailAddress,
+                //   decoration: const InputDecoration(
+                //       hintText: "Email", contentPadding: EdgeInsets.all(20)),
+                // ),
+                // TextField(
+                //   controller: _password,
+                //   obscureText: true,
+                //   enableSuggestions: false,
+                //   autocorrect: false,
+                //   decoration: const InputDecoration(
+                //       hintText: "Password", contentPadding: EdgeInsets.all(20)),
+                // ),
                 ElevatedButton(
                   onPressed: () async {
                     final email = _email.text;
@@ -92,7 +97,7 @@ class _RegisterState extends State<Register> {
                   style: ElevatedButton.styleFrom(
                       primary: primaryColor,
                       textStyle: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold)),
+                          fontSize: 20, fontWeight: FontWeight.w300)),
                   child: const Text("Register"),
                 ),
               ],
