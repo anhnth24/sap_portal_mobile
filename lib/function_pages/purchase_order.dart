@@ -1,7 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:sap_portal/navbar.dart';
+import 'package:sap_portal/function_pages/sidebar.dart';
+
+import '../utils/constants.dart';
 
 class Purchaseorder extends StatefulWidget {
   const Purchaseorder({Key? key}) : super(key: key);
@@ -16,11 +18,11 @@ class _PurchaseorderState extends State<Purchaseorder> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Purchase order"),
-          backgroundColor: Colors.green,
+          backgroundColor: primaryColor,
         ),
-        drawer: const NavBar(),
+        drawer: const SideBar(),
         resizeToAvoidBottomInset: true,
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: backgroundColor,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

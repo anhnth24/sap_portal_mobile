@@ -6,7 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:toast/toast.dart';
 import 'authentication.dart';
 import 'function_pages/login.dart';
-import 'homepage.dart';
+import 'function_pages/home_page.dart';
+import 'utils/constants.dart';
 
 final auth = Authentication();
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         resizeToAvoidBottomInset: true,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        body: const Login(),
+        body: const HomePage(),
         bottomNavigationBar: BottomAppBar(
           color: const Color.fromARGB(255, 255, 255, 255),
           elevation: 0,
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: const Text(
               "Anhnth dev, yyyyy",
-              style: TextStyle(color: Colors.green),
+              style: TextStyle(color: primaryColor),
               textAlign: TextAlign.center,
             ),
           ),
@@ -184,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 70,
               padding: const EdgeInsets.only(top: 20),
               child: RaisedButton(
-                  color: Colors.green,
+                  color: primaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   onPressed: () {
@@ -436,7 +437,7 @@ class _SignupPageContent extends State<SignupPageContent> {
             height: 70,
             padding: const EdgeInsets.only(top: 20),
             child: RaisedButton(
-                color: Colors.green,
+                color: primaryColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () async {

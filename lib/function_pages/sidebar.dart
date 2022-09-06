@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sap_portal/function_pages/register.dart';
-import 'package:sap_portal/function_pages/saleorder.dart';
+import 'package:sap_portal/function_pages/sale_order.dart';
 
-import 'function_pages/purchaseorder.dart';
-import 'main.dart';
+import 'purchase_order.dart';
+import '../main.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({Key? key}) : super(key: key);
+class SideBar extends StatelessWidget {
+  const SideBar({Key? key}) : super(key: key);
 
   showAlertDialog(BuildContext context) {
     // set up the buttons

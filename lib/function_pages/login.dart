@@ -2,9 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sap_portal/homepage.dart';
+import 'package:sap_portal/function_pages/home_page.dart';
 
 import '../firebase_options.dart';
+import '../utils/constants.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: primaryColor,
         title: const Text("Welcome !!!"),
       ),
       body: FutureBuilder(
@@ -95,7 +96,7 @@ class _LoginState extends State<Login> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
+                      primary: primaryColor,
                       textStyle: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold)),
                   child: const Text("Login"),

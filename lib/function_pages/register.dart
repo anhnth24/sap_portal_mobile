@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sap_portal/firebase_options.dart';
 
-import '../navbar.dart';
+import 'sidebar.dart';
+import '../utils/constants.dart';
 import '../utils/toastdialog.dart';
 
 class Register extends StatefulWidget {
@@ -36,10 +37,10 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: primaryColor,
         title: const Text("Regist new user"),
       ),
-      drawer: const NavBar(),
+      drawer: const SideBar(),
       body: FutureBuilder(
           future: Firebase.initializeApp(
               options: DefaultFirebaseOptions.currentPlatform),
@@ -73,12 +74,6 @@ class _RegisterState extends State<Register> {
                           .then(
                             (success) =>
                                 notificationSuccess('Create successfully'),
-
-                            // Toast.show(
-                            // "Create user successfully !",
-                            // duration: 2,
-                            // backgroundColor: Colors.green,
-                            // textStyle: const TextStyle(color: Colors.white))
                           );
                     } on FirebaseAuthException catch (e) {
                       if (kDebugMode) {
@@ -95,7 +90,7 @@ class _RegisterState extends State<Register> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
+                      primary: primaryColor,
                       textStyle: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold)),
                   child: const Text("Register"),
