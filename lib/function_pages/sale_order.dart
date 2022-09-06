@@ -5,14 +5,14 @@ import 'package:sap_portal/function_pages/sidebar.dart';
 import 'package:sap_portal/utils/constants.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 
-class Saleorder extends StatefulWidget {
-  const Saleorder({Key? key}) : super(key: key);
+class SaleOrder extends StatefulWidget {
+  const SaleOrder({Key? key}) : super(key: key);
 
   @override
-  _SaleorderState createState() => _SaleorderState();
+  _SaleOrderState createState() => _SaleOrderState();
 }
 
-class _SaleorderState extends State<Saleorder> {
+class _SaleOrderState extends State<SaleOrder> {
   TextEditingController customerController = TextEditingController();
 
   @override

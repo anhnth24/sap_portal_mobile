@@ -1,6 +1,6 @@
 import 'model_product.dart';
 
-abstract class Customer {
+class Customer {
   final String cardCode;
   final String cardName;
   final List<Product> products;
