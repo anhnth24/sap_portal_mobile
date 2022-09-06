@@ -13,14 +13,13 @@ class DetailSaleOrderPage extends StatefulWidget {
 }
 
 class _DetailSaleOrderPageState extends State<DetailSaleOrderPage> {
-  TextEditingController _id = TextEditingController();
-  TextEditingController _username = TextEditingController();
-  TextEditingController _email = TextEditingController();
-  TextEditingController _phone = TextEditingController();
+  final TextEditingController _id = TextEditingController();
+  final TextEditingController _username = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _phone = TextEditingController();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(() {
       _id.text = widget.customer.id.toString();

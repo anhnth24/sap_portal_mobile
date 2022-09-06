@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:sap_portal/function_pages/sale_order_create_page.dart';
 import 'package:sap_portal/function_pages/sale_order_detail_page.dart';
 import 'package:sap_portal/function_pages/sidebar.dart';
 import 'package:sap_portal/models/customer_model.dart';
@@ -36,6 +37,16 @@ class _SaleOrderState extends State<SaleOrder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: ((context) => const CreateSaleOrder())));
+          },
+          backgroundColor: primaryColor,
+          focusColor: Colors.red,
+          child: const Icon(Icons.add_box_outlined)),
       appBar: AppBar(
         title: const Text("Sale order"),
         backgroundColor: primaryColor,
