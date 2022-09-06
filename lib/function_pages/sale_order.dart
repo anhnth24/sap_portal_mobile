@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:sap_portal/function_pages/sidebar.dart';
+import 'package:sap_portal/models/customer_model.dart';
+import 'package:sap_portal/services/user_services.dart';
 import 'package:sap_portal/utils/constants.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 
 class SaleOrder extends StatefulWidget {
   const SaleOrder({Key? key}) : super(key: key);
@@ -13,28 +14,47 @@ class SaleOrder extends StatefulWidget {
 }
 
 class _SaleOrderState extends State<SaleOrder> {
-  TextEditingController customerController = TextEditingController();
+  List<Customer>? customers;
+
+  var isLoaded = false;
+  @override
+  void initState() {
+    super.initState();
+    getCustomers();
+  }
+
+  getCustomers() async {
+    customers = await UserService().getAllCustomers();
+    if (customers != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Sale order"),
-          backgroundColor: primaryColor,
+      appBar: AppBar(
+        title: const Text("Sale order"),
+        backgroundColor: primaryColor,
+      ),
+      drawer: const SideBar(),
+      backgroundColor: backgroundColor,
+      body: Visibility(
+        visible: isLoaded,
+        replacement: const Center(
+          child: CircularProgressIndicator(),
         ),
-        drawer: const SideBar(),
-        resizeToAvoidBottomInset: true,
-        backgroundColor: backgroundColor,
-        body: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          DropdownSearch<String>(
-            popupProps: PopupProps.menu(
-              showSelectedItems: true,
-              disabledItemFn: (String s) => s.startsWith('I'),
-            ),
-            items: ["Brazil", "Italia (Disabled)", "Tunisia", 'Canada'],
-            onChanged: print,
-            selectedItem: "Brazil",
-          )
-        ]));
+        child: ListView.builder(
+            itemCount:
+                customers != null ? customers?.length : 0, //customers?.length,
+            itemBuilder: ((context, index) {
+              return Container(
+                child: Text(customers![index].name, style: textDisplay),
+              );
+            })),
+      ),
+    );
   }
 }
