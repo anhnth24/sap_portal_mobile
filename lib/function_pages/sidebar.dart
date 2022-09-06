@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sap_portal/function_pages/register.dart';
+import 'package:sap_portal/function_pages/register_page.dart';
 import 'package:sap_portal/function_pages/sale_order.dart';
 
 import 'purchase_order.dart';
@@ -59,7 +59,7 @@ class SideBar extends StatelessWidget {
             onTap: () {
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => const Saleorder()),
+                MaterialPageRoute(builder: (context) => const SaleOrder()),
                 (Route<dynamic> route) => false,
               );
             },
@@ -89,16 +89,40 @@ class SideBar extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.menu),
             title: const Text('Logout'),
-            onTap: () {
-              FirebaseAuth.instance.signOut();
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => const MyApp()),
-                (Route<dynamic> route) => false,
-              );
-              //showAlertDialog(context);
-            },
-          ),
+            // onTap: () {
+            //   FirebaseAuth.instance.signOut();
+            //   Navigator.pushAndRemoveUntil(
+            //     context,
+            //     MaterialPageRoute(builder: (context) => const MyApp()),
+            //     (Route<dynamic> route) => false,
+            //   );
+            //   //showAlertDialog(context);
+            // },
+            onTap: (() => showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                      title: const Text(''),
+                      content: const Text('Do you want to log out now ?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'No'),
+                          child: const Text('No'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            FirebaseAuth.instance.signOut();
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyApp()),
+                              (Route<dynamic> route) => false,
+                            );
+                          },
+                          child: const Text('Yes'),
+                        ),
+                      ],
+                    ))),
+          )
         ],
       ),
     );

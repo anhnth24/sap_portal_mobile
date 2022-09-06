@@ -5,7 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'package:toast/toast.dart';
 import 'authentication.dart';
-import 'function_pages/login.dart';
+import 'function_pages/login_ page.dart';
 import 'function_pages/home_page.dart';
 import 'utils/constants.dart';
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: const Text(
               "Anhnth dev, yyyyy",
-              style: TextStyle(color: primaryColor),
+              style: TextStyle(color: Colors.black),
               textAlign: TextAlign.center,
             ),
           ),
