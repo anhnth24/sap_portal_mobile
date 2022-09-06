@@ -6,7 +6,7 @@ import 'package:sap_portal/firebase_options.dart';
 
 import 'sidebar.dart';
 import '../utils/constants.dart';
-import '../utils/toastdialog.dart';
+import '../utils/toast_dialog.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -80,12 +80,12 @@ class _RegisterState extends State<Register> {
                         print(e.code);
                       }
                       if (e.code == 'weak-password') {
-                        notificationSuccess(
+                        notificationError(
                             'week password, atleast 6 characters');
                       } else if (e.code == 'email-already-in-use') {
-                        notificationSuccess('email already exists');
+                        notificationError('email already exists');
                       } else if (e.code == 'firebase/invalid-email') {
-                        notificationSuccess('invalid email');
+                        notificationError('invalid email');
                       }
                     }
                   },

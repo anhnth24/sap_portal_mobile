@@ -50,8 +50,15 @@ class _SaleOrderState extends State<SaleOrder> {
             itemCount:
                 customers != null ? customers?.length : 0, //customers?.length,
             itemBuilder: ((context, index) {
-              return Container(
-                child: Text(customers![index].name, style: textDisplay),
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Userid : ${customers![index].id}',
+                    style: textDisplay,
+                  ),
+                  Text('User name : ${customers![index].name}'),
+                ],
               );
             })),
       ),
