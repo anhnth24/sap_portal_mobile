@@ -95,7 +95,7 @@ class _RegisterState extends State<Register> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: primaryColor,
+                      backgroundColor: primaryColor,
                       textStyle: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.w300)),
                   child: const Text("Register"),

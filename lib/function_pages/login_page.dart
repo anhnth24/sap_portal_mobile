@@ -37,7 +37,6 @@ class _LoginState extends State<Login> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
-        // title: const Text("Welcome !!!"),
       ),
       body: FutureBuilder(
           future: Firebase.initializeApp(
@@ -52,22 +51,6 @@ class _LoginState extends State<Login> {
                     TextInputType.emailAddress, false, false, false),
                 buildTextFieldSecure(_password, context, 'Password',
                     TextInputType.visiblePassword, true, false, false),
-                // TextField(
-                //   controller: _email,
-                //   enableSuggestions: false,
-                //   autocorrect: false,
-                //   keyboardType: TextInputType.emailAddress,
-                //   decoration: const InputDecoration(
-                //       hintText: "Email", contentPadding: EdgeInsets.all(20)),
-                // ),
-                // TextField(
-                //   controller: _password,
-                //   obscureText: true,
-                //   enableSuggestions: false,
-                //   autocorrect: false,
-                //   decoration: const InputDecoration(
-                //       hintText: "Password", contentPadding: EdgeInsets.all(20)),
-                // ),
                 ElevatedButton(
                   onPressed: () async {
                     final email = _email.text;
@@ -93,7 +76,7 @@ class _LoginState extends State<Login> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                      primary: primaryColor,
+                      backgroundColor: primaryColor,
                       textStyle: const TextStyle(
                           fontSize: 20, fontWeight: FontWeight.w300)),
                   child: const Text("Login"),

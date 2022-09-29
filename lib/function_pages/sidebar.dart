@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sap_portal/function_pages/register_page.dart';
 import 'package:sap_portal/function_pages/sale_order.dart';
+// import 'package:sap_portal/function_pages/scan_barcode.dart';
 
 import 'purchase_order.dart';
 import '../main.dart';
@@ -64,6 +65,29 @@ class SideBar extends StatelessWidget {
               );
             },
           ),
+          // ListTile( // DROPDOWN EXAMPLE
+          //   leading: const Icon(Icons.menu),
+          //   title: const Text('Drop Down example'),
+          //   onTap: () {
+          //     Navigator.pushAndRemoveUntil(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const Dropdown()),
+          //       (Route<dynamic> route) => false,
+          //     );
+          //   },
+          // ),
+          // ListTile(
+          //   // SCAN BARCODE
+          //   leading: const Icon(Icons.menu),
+          //   title: const Text('Scan barcode'),
+          //   onTap: () {
+          //     Navigator.pushAndRemoveUntil(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const ScanBarcode()),
+          //       (Route<dynamic> route) => false,
+          //     );
+          //   },
+          // ),
           ListTile(
             leading: const Icon(Icons.menu),
             title: const Text('Purchase Order'),
