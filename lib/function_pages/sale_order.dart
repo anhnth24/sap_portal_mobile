@@ -1,10 +1,13 @@
 // ignore_for_file: library_private_types_in_public_api, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sap_portal/function_pages/sale_order_create_page.dart';
 import 'package:sap_portal/function_pages/sale_order_detail_page.dart';
 import 'package:sap_portal/function_pages/sidebar.dart';
 import 'package:sap_portal/models/customer_model.dart';
+import 'package:sap_portal/models/sale_order_model.dart';
+import 'package:sap_portal/services/sale_order_services.dart';
 import 'package:sap_portal/services/user_services.dart';
 import 'package:sap_portal/utils/constants.dart';
 
@@ -16,14 +19,29 @@ class SaleOrder extends StatefulWidget {
 }
 
 class _SaleOrderState extends State<SaleOrder> {
+  final DateFormat formatter = DateFormat('yyyy-MM-dd');
   TextEditingController controller = TextEditingController();
+  TextEditingController _fromdate = TextEditingController();
+  TextEditingController _todate = TextEditingController();
   List<Customer>? customers;
+  List<SaleOrders>? saleorders;
 
   var isLoaded = false;
   @override
   void initState() {
     super.initState();
     getCustomers();
+    getSaleOrders(_fromdate.toString(), _todate.toString());
+  }
+
+  getSaleOrders(String fdate, String tdate) async {
+    saleorders = await SaleOrderService().getListSaleOders(fdate, fdate);
+    if (saleorders != null) {
+      print(saleorders);
+      setState(() {
+        isLoaded = true;
+      });
+    }
   }
 
   getCustomers() async {
@@ -54,6 +72,34 @@ class _SaleOrderState extends State<SaleOrder> {
       ),
       drawer: const SideBar(),
       backgroundColor: backgroundColor,
+      body: Visibility(
+        visible: isLoaded,
+        replacement: const Center(
+          child: CircularProgressIndicator(),
+        ),
+        child: ListView.builder(
+            itemCount:
+                customers != null ? customers?.length : 0, //customers?.length,
+            itemBuilder: (context, index) {
+              return Card(
+                child: ListTile(
+                  title: Text(customers![index].name),
+                  subtitle: Text(customers![index].username.toString()),
+                  leading: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Image.asset(imgFis),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DetailSaleOrderPage(
+                              customer: customers![index],
+                            )));
+                  },
+                ),
+              );
+            }),
+      ),
 
       // body: Column(
       //   children: <Widget>[
@@ -120,35 +166,6 @@ class _SaleOrderState extends State<SaleOrder> {
       //     ),
       //   ],
       // ),
-
-      body: Visibility(
-        visible: isLoaded,
-        replacement: const Center(
-          child: CircularProgressIndicator(),
-        ),
-        child: ListView.builder(
-            itemCount:
-                customers != null ? customers?.length : 0, //customers?.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(customers![index].name),
-                  subtitle: Text(customers![index].username.toString()),
-                  leading: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: Image.asset(imgFis),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => DetailSaleOrderPage(
-                              customer: customers![index],
-                            )));
-                  },
-                ),
-              );
-            }),
-      ),
     );
   }
 
